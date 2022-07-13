@@ -23,6 +23,7 @@
     owner: "{{ prometheus_system_user }}"
     group: prometheus
     mode: 0755
+  ignore_errors: "{{ ansible_check_mode }}"
 
 - name: create prometheus configuration directories
   file:
@@ -35,6 +36,7 @@
     - "{{ prometheus_config_dir }}"
     - "{{ prometheus_config_dir }}/rules"
     - "{{ prometheus_config_dir }}/file_sd"
+  ignore_errors: "{{ ansible_check_mode }}"
 
 - block:
     - name: download prometheus binary to local folder
